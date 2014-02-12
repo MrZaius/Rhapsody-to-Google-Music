@@ -1,42 +1,11 @@
-Provides a utility class around the Google Music API that allows for easy syncing of m3u playlists.
+Provides a utility class around the Google Music API that allows for easy syncing of csv file and ultimately an export of Rhapsody.
 
 ##Features
-Choose a local playlist (m3u) to sync and it will:
+Choose a local playlistto sync and it will:
 * Create or modify an existing Google Music playlist
-* Upload missing files
-* Handles unicode filenames or paths (and relative paths)
-* Add uploaded (or files already online) to playlist
-* Optionally remove files not in local playlist (will not delete those files from the cloud)
-* Adds each file to playlist individually as soon as the file is online (instead of as a batch at
+* search and find matching songs in All Access.(Google Music Subscription Required)
+* 
 the end)
-* Makes a best effort not to upload duplicate files by searching and comparing some basic info (this
-might fail if you modify id3 tags causing a duplicate to be uploaded)
-* Save the filename as the title in the ID3 data if its missing (saves in ID3v2.4 so unfortunately
-its incompatible with Windows Explorer/Player - this is due to the mutagen library I'm afraid)
-
-It does not:
-* Remove duplicate entries from playlists
-* Support duplicate copies of a file in a playlist (this actually may work - but is untested)
-* Re-order playlists (only ensures they contain the same files)
-
-Todo:
-* Add option to remove duplicates from playlist
-* Allow and handle duplicates
-* Option to re-order playlists
-
-Latest [2013/04/04]
-* Fixed to work with latest changes to API (v1.0.0 and above) This means it now uses OAuth for uploading... unfortunately this means you have to log in twice. If you're upgrading you'll need to 'pip uninstall gmusicapi' and then 'pip install gmusicapi' since the versioning changed (you might also need to use --upgrade to upgrade denendencies).
-
-Latest [2013/03/11]
-* Fixed to work with latest changes to API
-* Unfortunately now require avconv for most uploads (see http://unofficial-google-music-api.readthedocs.org/en/latest/usage.html#usage)
-
-Latest [2012/12/10]
-* Fixed bug with uploaded files that had no track causing an inability to sync that playlist anymore
-* Improved "already uploaded" detection (title and track checking)
-* Can now safely upload files with no ID3 data (it will use the filename for title - see above)
-* Now parses playlists correctly regardless of platform (ie: Windows playlist on Linux) and handles
-relative file locations
 
 ##Usage
 
@@ -49,24 +18,22 @@ ms = MusicSync()
 # To sync a playlist
 ms.sync_playlist("c:/path/to/playlist.m3u")
 
+see  How to Export Rhapsody to a Playlist file
+url: http://www.cutdek.com/blog/2011/6/23/exporting-your-rhapsody-library-to-csv.html
 # To sync a playlist including removing files that are no longer listed locally
-ms.sync_playlist("/path/to/playlist.m3u", remove_missing=True)
+ms.sync_playlist("/path/to/playlist")
 
-# To delete a song from the cloud (provided only as convenience - must know the song ID)
-ms.delete_song("song_id")
-```
 
 
 ##Requirements
 Requires:
 * gmusicapi (can use: pip install gmusicapi - or get it from https://github.com/simon-weber/Unofficial-Google-Music-API)
-* avconv (see http://unofficial-google-music-api.readthedocs.org/en/latest/usage.html#usage)
 
 - - -
 
 API used: https://github.com/simon-weber/Unofficial-Google-Music-API
 
-Thanks to: Kevin Kwok and Simon Weber
+Thanks to: Kevin Kwok and Simon Weber and Tom
 
 Use at your own risk - especially for existing playlists
 
