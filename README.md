@@ -3,7 +3,7 @@ Provides a utility class around the Google Music API that allows for easy syncin
 ##Features
 Choose a local playlistto sync and it will:
 * Create or modify an existing Google Music playlist
-* search and find matching songs in All Access.(Google Music Subscription Required)
+* parse delimited file and search and match them to Google All Access.(Google Music Subscription Required) and
 * 
 the end)
 
@@ -15,15 +15,18 @@ ms = MusicSync()
 # Will prompt for Email and Password - if 2-factor auth is on you'll need to generate a one-time password
 # The first time you use this (or another script that uses gmusicapi) you will be prompted to authenticate via an OAuth browser window - you will need to copy paste the URL (be careful - under Windows sometimes spaces are inserted into the copy/paste at new lines)
 
+
+#see  How to Export Rhapsody to a Playlist file
+#url: http://www.cutdek.com/blog/2011/6/23/exporting-your-rhapsody-library-to-csv.html
+
+#Delimiter should be: \ (see example playlist.txt file)
+
 # To sync a playlist
-ms.sync_playlist("c:/path/to/playlist.m3u")
+ms.sync_playlist("c:/path/to/playlist")
 
-see  How to Export Rhapsody to a Playlist file
-url: http://www.cutdek.com/blog/2011/6/23/exporting-your-rhapsody-library-to-csv.html
-# To sync a playlist including removing files that are no longer listed locally
-ms.sync_playlist("/path/to/playlist")
+#song_compare() -- matches the song from rhapsody to google music, if the script is having trouble matching songs, look to modify the rules in this def. 
 
-
+#Note: sorry for the messy code, i got it to work for my needs in a few hours, and figured I'd dump it out here for others to use.
 
 ##Requirements
 Requires:
