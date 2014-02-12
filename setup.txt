@@ -1,0 +1,33 @@
+
+__modified_by__ = "Jon Feutz"
+__modified_by_email__ = "jon.feutz@gmail.com"
+
+# Use python 2.7.6
+# Use pip install gmusicapi
+
+#Creating Rhapsody Export File:
+  -- recommended: Navicat Client to run query export file
+  -- how_to_export_rhapsody:
+  --- url: http://www.cutdek.com/blog/2011/6/23/exporting-your-rhapsody-library-to-csv.html
+
+#playlist delimiter is: \
+ Used this over a comma , etc because of comma's being in song titles. Save the file in UTF-8 format.
+
+Modify runme.py change the playlist filename to whatever you file name is.
+
+#Purpose
+#Modified Tom's script to read a file export of a Rhapsody sqlite3 database
+#and then used the file to create playlists in Google Music.
+
+#Modifieds script to Parse a file in the format::
+#[Playlist]\[Artist]\[Album]\[Title]
+
+# Quick Notes
+# Using the directions for Rhapsody found here: 
+# url:http://www.cutdek.com/blog/2011/6/23/exporting-your-rhapsody-library-to-csv.html
+# Navicat Light works awesome for this, run query, choose export to text file, choose Other Symbol for delimiter and set to: \
+# Modify the runme.py with your google music username and password (will not work unless you have a subscription)
+#install gmusicapi with pip
+
+# I wrote this quickly and didnt take the time reorganize the code.
+# you may need to play with the song_compare subs to do a better job of find the correct song in all access.
