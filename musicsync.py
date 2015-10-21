@@ -94,7 +94,7 @@ class MusicSync(object):
 
     def auth(self):
         self.logged_in = self.wc.login(self.email, self.password)
-        self.logged_in = self.mc.login(self.email, self.password)
+        self.logged_in = self.mc.login(self.email, self.password, Mobileclient.FROM_MAC_ADDRESS)
         if not self.logged_in:
             print "Login failed..."
             exit()
